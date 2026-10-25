@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <!-- Auf dem Tablet: „Zum Home-Bildschirm“ startet das Spiel ohne Browserleiste -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Motorrad">
+  <title>Motorrad-Rennen</title>
+  <link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+  <canvas id="leinwand"></canvas>
+
+  <!-- Touch-Steuerung für Tablets (erscheint nur auf Geräten mit Touchscreen) -->
+  <div id="touchSteuerung">
+    <div class="touch-gruppe links">
+      <div class="touch-knopf" data-taste="ArrowLeft">◀</div>
+      <div class="touch-knopf" data-taste="ArrowRight">▶</div>
+    </div>
+    <div class="touch-gruppe rechts">
+      <div class="touch-knopf bremse" data-taste="ArrowDown">BREMSE</div>
+      <div class="touch-knopf gas" data-taste="ArrowUp">GAS</div>
+    </div>
+  </div>
+  <button id="pauseKnopf" class="touch-pause" aria-label="Pause">⏸</button>
+  <div id="drehHinweis">📱 ↻<br>Bitte das Tablet quer halten</div>
+
+  <div id="menue" class="ueberlagerung">
+    <div class="kasten">
+      <h1>🏍️ Motorrad-Rennen</h1>
+      <h2>1. Wähle die Strecke</h2>
+      <div id="streckenAuswahl" class="gruppen"></div>
+      <h2>2. Wähle dein Motorrad</h2>
+      <div id="farbAuswahl" class="auswahl"></div>
+      <h2>3. Wie schwer soll es sein?</h2>
+      <div id="stufenAuswahl" class="auswahl"></div>
+      <button id="startKnopf" class="knopf gross">Los geht's! 🏁</button>
+      <p class="steuerung touch-hinweis">
+        Links <b>◀ ▶</b> lenken, rechts <b>Gas</b> und <b>Bremse</b> – mit <b>⏸</b> machst du Pause.
+      </p>
+      <p class="steuerung tasten-hinweis">
+        <kbd>↑</kbd> Gas &nbsp; <kbd>↓</kbd> Bremse &nbsp; <kbd>←</kbd> <kbd>→</kbd> Lenken
+        &nbsp; <kbd>P</kbd> Pause &nbsp; <kbd>M</kbd> Ton an/aus
+      </p>
+    </div>
+  </div>
+
+  <div id="pause" class="ueberlagerung versteckt">
+    <div class="kasten klein">
+      <h1>⏸️ Pause</h1>
+      <button id="weiterKnopf" class="knopf gross">Weiterfahren</button>
+      <div>
+        <button id="neustartKnopf" class="knopf">Neu starten</button>
+        <button id="menueKnopf1" class="knopf">Zum Menü</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="ergebnis" class="ueberlagerung versteckt">
+    <div class="kasten klein">
+      <h1 id="ergebnisTitel"></h1>
+      <div id="ergebnisInhalt"></div>
+      <button id="nochmalKnopf" class="knopf gross">Nochmal fahren</button>
+      <div><button id="menueKnopf2" class="knopf">Zum Menü</button></div>
+    </div>
+  </div>
+
+  <script src="js/strecken.js"></script>
+  <script src="js/zeichnen.js"></script>
+  <script src="js/ton.js"></script>
+  <script src="js/spiel.js"></script>
+</body>
+</html>
