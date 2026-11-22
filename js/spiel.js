@@ -1212,21 +1212,18 @@ function tachoZeichnen(s) {
 // =====================================================================
 //  MENÜ, PAUSE, ERGEBNIS
 // =====================================================================
+// Bestzeiten nur im Arbeitsspeicher – im Browser wird nichts gespeichert.
+// Beim Neuladen der Seite sind die Bestzeiten wieder leer.
+const bestzeiten = {};
+
 function bestzeitLesen(nr) {
-  try {
-    const wert = localStorage.getItem('motorrad-bestzeit-' + nr);
-    return wert ? Number(wert) : null;
-  } catch (e) {
-    return null;
-  }
+  return bestzeiten[nr] ?? null;
 }
 
 function bestzeitSpeichern(nr, zeit) {
   const alt = bestzeitLesen(nr);
   if (alt !== null && alt <= zeit) return false;
-  try {
-    localStorage.setItem('motorrad-bestzeit-' + nr, String(zeit));
-  } catch (e) { /* ohne Speicher geht's auch */ }
+  bestzeiten[nr] = zeit;
   return true;
 }
 
